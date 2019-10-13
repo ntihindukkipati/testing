@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-62">
+  <h3 class="text-center my-4">Search for Weather:</h3>
+  <form [formGroup]="weatherSearchForm" (ngSubmit)="sendToAPIXU(weatherSearchForm.value)" >
+        <div class="form-group">
+      <input
+        class="form-control"
+        type="text"
+        id="weatherLocation"
+        aria-describedby="weatherLocation"
+        placeholder="Please input a Location"
+      formControlName="location" />
+          <input
+            class="form-control"
+            type="text"
+            id=""
+
+            placeholder="Please input state code"
+           />
+
+        </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-success btn-md" onClick="f()">
+        Search for the weather
+      </button>
+    </div>
+  </form>
+</div>
+<div class="col-md-61"  id="wd">
+  <h3 class="text-center my-4">Weather Details:</h3>
+  <p class="text-center">Current weather conditions:  {{this.weatherData?.current.condition.text}}</p>
+  <p class="text-center">Temperature in Degrees Celsius:  {{this.weatherData?.current.temp_c}}</p>
+  <p class="text-center">Temperature in Degrees Farenheit:  {{this.weatherData?.current.temp_f}}</p>
+  <p class="text-center">Feels like in Degrees Celsius:  {{this.weatherData?.current.feelslike_c}}</p>
+  <p class="text-center">Feels like in Degrees Farenheit:  {{this.weatherData?.current.feelslike_f}}</p>
+  <p class="text-center">Location Searched:  {{this.weatherData?.location.name}},
+    {{this.weatherData?.location.country}}</p>
+ </div>
+</div>
+  <div class="rows"  id="fd">
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Forecast Details:</h3>
+     <b> <p class="text-center">Tomorrow's weather conditions:  {{this.forecastData?.forecast.forecastday[0].day.condition.text}}</p>
+      <p class="text-center">Temperature in Degrees Celsius:  {{this.forecastData?.forecast.forecastday[0].day.avgtemp_c}}</p>
+      <p class="text-center">Temperature in Degrees Farenheit:  {{this.forecastData?.forecast.forecastday[0].day.avgtemp_f}}</p>
+      <p class="text-center">Max Wind in Miles per Hour:  {{this.forecastData?.forecast.forecastday[0].day.maxwind_mph}}</p>
+      <p class="text-center">Average Humidity:  {{this.forecastData?.forecast.forecastday[0].day.avghumidity}}</p>
+     </b> </div>
+  </div>
+</div>
+<style>
+  .rows
+  {
+    width: 400px;
+    height: 570px;
+    padding: 20px;
+    background: rgba(0,0,0,.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+  }
+  .container
+  {
+    background-color: slategrey;
+
+  }
+  .col-md-6
+  {
+    font-family: sans-serif;
+    font-size:16px;
+    color: #03a9f4;
+  }
+  .col-md-61
+  {
+    position: relative;
+    top: 50%;
+    left: 10%;
+    width: 400px;
+    padding: 30px;
+    background: rgba(0,0,0,.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-size:16px;
+    color: #03a9f4;
+  }
+  .col-md-62
+  {
+    top: 50%;
+    left: 10%;
+    width: 500px;
+    height: 300px;
+    padding: 30px;
+    background: rgba(0,0,0,.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 10px rgba(0,0,0,.5);
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-size:16px;
+    color: #03a9f4;
+  }
+</style>
